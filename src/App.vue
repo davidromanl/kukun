@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+    <div class="costos">
+      Rango Costos: $
+      <span class="color1">0 - 199</span>
+      <span class="color2">200 - 399</span>
+      <span class="color3">400 - 599</span>
+      <span class="color4">600 - 799</span>
+      <span class="color5">800 - 1000</span>
+    </div>
     <svg
       width="100%"
       height="583"
@@ -390,14 +398,7 @@
         </filter>
       </defs>
     </svg>
-    <div class="costos">
-      Rango Costos: $
-      <span class="color1">0 - 199</span>
-      <span class="color2">200 - 399</span>
-      <span class="color3">400 - 599</span>
-      <span class="color4">600 - 799</span>
-      <span class="color5">800 - 1000</span>
-    </div>
+
     <div class="info" :style="`top: ${y}px; left: ${x}px;`">
       Card con info <br />
       Estado: {{ info.nombre }} <br />
@@ -452,7 +453,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 .info {
   position: absolute;
@@ -461,14 +462,26 @@ export default {
   padding: 5px;
   top: 0;
   background: rgba(30, 30, 30, 0.5);
-  transition: all 0.4s;
+  transition: all 0.4s ease-in-out;
   color: #fff;
 }
 .costos {
   border: 1px solid #CCC;
   padding: 5px 15px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
-path { cursor: pointer; }
+path {
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+}
+path:hover { 
+  fill: rgba(25,50,100,1);
+  stroke: black;
+  z-index: 999;
+}
 .color1 {
   background-color: #CAB3FA;
   padding: 5px 15px;
