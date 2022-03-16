@@ -301,7 +301,7 @@
       </defs>
     </svg>
 
-    <div class="info" :style="`top: ${y}px; left: ${x}px;`">
+    <div ref="info" class="info" :style="`top: ${y}px; left: ${x}px;`">
       Card con info <br />
       Estado: {{ info.nombre }} <br />
       Costo: $ {{ info.costo }} <br />
@@ -335,12 +335,18 @@ export default {
       if (item.costo > 600 && item.costo < 800) color = "#8F5EF4";
       el.setAttribute("fill", color);
 
-  // Añadir evento mouse para traer info
+  // Añadir evento mouse enter para traer info
       el.addEventListener("mouseenter", ({ target, clientX, clientY }) => {
+        this.$refs.info.style.opacity = 1;
         this.info.nombre = data[target.id].nombre;
         this.info.costo = data[target.id].costo;
         this.x = clientX;
         this.y = clientY;
+      });
+
+  // Añadir evento mouse para traer info
+      el.addEventListener("mouseout", () => {
+        this.$refs.info.style.opacity = 0;
       });
 
   // Añadir evento click para abrir enlace url
